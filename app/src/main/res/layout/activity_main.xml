@@ -33,12 +33,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="  Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century." />
+            android:text="Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century." />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="  Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century." />
+            android:text="Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.Atom is a hackable text editor for the 21st century." />
 
         <EditText
             android:id="@+id/pwd2_ed"

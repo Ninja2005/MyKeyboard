@@ -3,8 +3,9 @@ package com.hqumath.keyboard;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,10 +21,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
         initListener();
-        initData();
     }
 
     protected void initView() {
@@ -32,18 +31,12 @@ public class MainActivity extends AppCompatActivity {
         mNum_ed = findViewById(R.id.num_ed);
         mPwd1_ed = findViewById(R.id.pwd1_ed);
         mPwd2_ed = findViewById(R.id.pwd2_ed);
-
     }
 
     protected void initListener() {
         keyboardUtil = new KeyboardUtil(this, mMain_ll);
         keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Num, mNum_ed);
         keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Pwd, mPwd1_ed, mPwd2_ed);
-
-    }
-
-    protected void initData() {
-
     }
 
     /**
@@ -51,7 +44,66 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        if (keyboardUtil != null)
-            keyboardUtil.hide();
+        if (keyboardUtil != null && keyboardUtil.hide())
+            return;
+        super.onBackPressed();
+    }
+
+    /**
+     * 根据事件分发，点击空白处隐藏键盘
+     *
+     * @param ev
+     * @return
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (SoftKeyboardUtil.isTouchView(filterViewByIds(), ev))
+                    return super.dispatchTouchEvent(ev);
+                if (hideSoftByEditViewIds() == null || hideSoftByEditViewIds().length == 0)
+                    return super.dispatchTouchEvent(ev);
+                View v = getCurrentFocus();
+                if (SoftKeyboardUtil.isFocusEditText(v, hideSoftByEditViewIds())) {
+                    if (SoftKeyboardUtil.isTouchView(hideSoftByEditViewIds(), ev))
+                        return super.dispatchTouchEvent(ev);
+                    //隐藏键盘
+                    SoftKeyboardUtil.hideInputForce(this, v);
+                    if (getKeyboardUtil() != null)
+                        getKeyboardUtil().hide();
+                    SoftKeyboardUtil.clearViewFocus(v, hideSoftByEditViewIds());
+                }
+                break;
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    /**
+     * 传入EditText的View
+     * 没有传入的EditText不做处理
+     *
+     * @return id 数组
+     */
+    public View[] hideSoftByEditViewIds() {
+        return new View[]{mNormal_ed, mNum_ed, mPwd1_ed, mPwd2_ed};
+    }
+
+    /**
+     * 传入要过滤的View
+     * 过滤之后点击将不会有隐藏软键盘的操作
+     *
+     * @return id 数组
+     */
+    public View[] filterViewByIds() {
+        return null;
+    }
+
+    /**
+     * 获取自定义键盘,用来隐藏自定义键盘
+     *
+     * @return
+     */
+    public KeyboardUtil getKeyboardUtil() {
+        return keyboardUtil;
     }
 }
