@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     return super.dispatchTouchEvent(ev);
                 View v = getCurrentFocus();
                 if (SoftKeyboardUtil.isFocusEditText(v, hideSoftByEditViewIds())) {
+                    //TODO 从普通键盘到自定义键盘  不会隐藏普通键盘
                     if (SoftKeyboardUtil.isTouchView(hideSoftByEditViewIds(), ev))
                         return super.dispatchTouchEvent(ev);
                     //隐藏键盘
