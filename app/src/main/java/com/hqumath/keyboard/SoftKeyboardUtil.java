@@ -16,6 +16,7 @@ import android.widget.EditText;
  * 注意事项:
  * ****************************************************************
  */
+
 public class SoftKeyboardUtil {
 
     /**

@@ -7,6 +7,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ * ****************************************************************
+ * 文件名称: MainActivity
+ * 作    者: Created by gyd
+ * 创建时间: 2018/11/26 17:12
+ * 文件描述: 自定义键盘demo
+ * 注意事项:
+ * ****************************************************************
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout mMain_ll;//主布局

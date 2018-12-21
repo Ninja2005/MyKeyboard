@@ -27,6 +27,7 @@ import java.lang.reflect.Method;
  * 注意事项:
  * ****************************************************************
  */
+
 public class KeyboardUtil {
     private Activity mActivity;
     private View mParent;

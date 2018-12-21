@@ -18,9 +18,9 @@ import java.util.Random;
  * 创建时间: 2018/11/29 17:20
  * 文件描述: 自定义键盘，支持多种键盘切换
  * 注意事项: 密码输入
- * 版权声明: Copyright (C) 2016-2026 浙商国际金融资产交易中心
  * ****************************************************************
  */
+
 public class MyKeyboardView extends KeyboardView {
     public static final int KEYBOARDTYPE_Num = 0;//数字键盘
     public static final int KEYBOARDTYPE_Pwd = 1;//数字键盘（密码）
