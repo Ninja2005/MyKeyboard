@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 隐藏自定义键盘
+     * 点击返回按钮，隐藏自定义键盘
      */
     @Override
     public void onBackPressed() {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 根据事件分发，点击空白处隐藏键盘
+     * 点击空白处隐藏键盘
      *
      * @param ev
      * @return
