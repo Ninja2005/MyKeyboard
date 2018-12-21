@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--自定义键盘颜色-->
+    <color name="keyboard_back_color">#E5E5E5</color>
+    <color name="keyboard_pressed_color">#D4D6D8</color>
+    <color name="keyboard_text_color">#333333</color>
+    <color name="keyboard_blue_color">#0080f3</color>
+    <color name="keyboard_white_color">#FFFFFF</color>
+
+</resources>

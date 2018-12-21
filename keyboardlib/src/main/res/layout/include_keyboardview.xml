@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#e5e5e5"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/keyboard_top_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/keyboard_label"
+            android:textStyle="bold"
+            android:textColor="#666666"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:text="@string/done"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/keyboard_blue_color"/>
+    </RelativeLayout>
+
+    <com.hqumath.keyboard.MyKeyboardView
+        android:id="@+id/keyboard_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:keyBackground="@drawable/keyboard_keybg_white"
+        android:keyPreviewOffset="0dp"
+        android:keyTextColor="@color/keyboard_text_color"
+        android:background="@color/keyboard_back_color"
+        android:keyTextSize="20dp"
+        android:paddingBottom="6dp"
+        android:shadowColor="#FFFFFF"
+        android:shadowRadius="0.0" />
+
+</LinearLayout>
+
