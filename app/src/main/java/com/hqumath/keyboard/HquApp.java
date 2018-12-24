@@ -11,7 +11,6 @@ import android.app.Application;
  * 注意事项:
  * ****************************************************************
  */
-
 public class HquApp extends Application {
 
     @Override

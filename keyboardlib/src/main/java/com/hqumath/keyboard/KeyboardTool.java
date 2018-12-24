@@ -9,16 +9,14 @@ import android.widget.EditText;
 
 /**
  * ****************************************************************
- * 文件名称: SoftKeyboardUtil
+ * 文件名称: KeyboardTool
  * 作    者: Created by gyd
- * 创建时间: 2018/11/26 17:12
- * 文件描述: 隐藏键盘用的工具类
+ * 创建时间: 2018/12/24 18:49
+ * 文件描述: 键盘隐藏工具
  * 注意事项:
  * ****************************************************************
  */
-
-public class SoftKeyboardUtil {
-
+public class KeyboardTool {
     /**
      * 隐藏键盘
      *
@@ -54,13 +52,13 @@ public class SoftKeyboardUtil {
     }
 
     /**
-     * des:隐藏软键盘,这种方式参数为activity
+     * 隐藏软键盘,这种方式参数为activity
      */
     public static void hideInputForce(Activity activity, View currentFocusView) {
         if (activity == null || currentFocusView == null)
             return;
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null)
-            imm.hideSoftInputFromWindow(currentFocusView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            imm.hideSoftInputFromWindow(currentFocusView.getWindowToken(), 0);
     }
 }

@@ -27,13 +27,11 @@ import java.lang.reflect.Method;
  * 注意事项:
  * ****************************************************************
  */
-
 public class KeyboardUtil {
     private Activity mActivity;
     private View mParent;
 
     private PopupWindow mWindow;
-    private InputMethodManager imm;
     private MyKeyboardView mKeyboardView;
     private boolean needInit;
     private boolean mScrollTo = false;//是否界面上移，适应键盘
@@ -44,7 +42,6 @@ public class KeyboardUtil {
     public KeyboardUtil(Activity context, View parent) {
         this.mActivity = context;
         this.mParent = parent;
-        imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         LinearLayout mIncludeKeyboardview = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.include_keyboardview, null);
         RelativeLayout mKeyboardTopView = (RelativeLayout) mIncludeKeyboardview.findViewById(R.id.keyboard_top_rl);
         mKeyboardView = (MyKeyboardView) mIncludeKeyboardview.findViewById(R.id.keyboard_view);
@@ -81,8 +78,7 @@ public class KeyboardUtil {
                 public boolean onTouch(View v, MotionEvent event) {
                     if (event.getAction() == MotionEvent.ACTION_UP) {
                         //隐藏系统
-                        if (imm != null)
-                            imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+                        KeyboardTool.hideInputForce(mActivity, editText);
                         //初始化键盘
                         if (mKeyboardView.getEditText() != editText || needInit)
                             mKeyboardView.init(editText, mWindow, keyBoardType);

@@ -15,7 +15,6 @@ import android.util.DisplayMetrics;
  * 创建时间: 2018/10/31 21:28
  * 文件描述: 今日头条屏幕适配方案  https://blog.csdn.net/u013000152/article/details/80855315
  * 注意事项: 根据ui图，设置屏幕最小宽度
- * 版权声明: Copyright (C) 2016-2026 浙商国际金融资产交易中心
  * ****************************************************************
  */
 public class Density {

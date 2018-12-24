@@ -20,7 +20,6 @@ import java.util.Random;
  * 注意事项: 密码输入
  * ****************************************************************
  */
-
 public class MyKeyboardView extends KeyboardView {
     public static final int KEYBOARDTYPE_Num = 0;//数字键盘
     public static final int KEYBOARDTYPE_Pwd = 1;//数字键盘（密码）
