@@ -28,7 +28,6 @@
     public static final int KEYBOARDTYPE_Symbol = 4;//符号键盘
 ```
 
-
 ### 原理：
 
 PopupWindow实现，轻量级解决方案
@@ -42,10 +41,8 @@ ViewGroup.LayoutParams.WRAP_CONTENT, false);
 ### 效果图如下:
 
 <p align="center">
-<img src="screen/change.gif"
- algin="left"/>
-<img src="screen/push.gif"
- algin="left" />
+<img src="screen/change.gif" />
+<img src="screen/push.gif" />
 </p>
 
 
