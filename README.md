@@ -42,10 +42,9 @@ ViewGroup.LayoutParams.WRAP_CONTENT, false);
 ### 效果图如下
 
 <p align="center">
-<img src="images/change.gif" />
-<img src="images/push.gif" />
+<img src="screen/change.gif" />
+<img src="screen/push.gif" />
 </p>
-
 
 
 
