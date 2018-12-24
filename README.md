@@ -39,11 +39,13 @@ mWindow = new PopupWindow(mIncludeKeyboardview, ViewGroup.LayoutParams.MATCH_PAR
 ViewGroup.LayoutParams.WRAP_CONTENT, false);
 ```
 
-### 效果图如下
+### 效果图如下:
 
 <p align="center">
-<img src="screen/change.gif" />
-<img src="screen/push.gif" />
+<img src="screen/change.gif"
+ algin="left"/>
+<img src="screen/push.gif"
+ algin="left" />
 </p>
 
 
