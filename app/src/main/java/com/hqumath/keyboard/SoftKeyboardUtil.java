@@ -27,7 +27,7 @@ public class SoftKeyboardUtil {
      * @return true代表焦点在edit上
      */
     public static boolean isFocusEditText(View v, View... views) {
-        if (v instanceof EditText) {
+        if (v instanceof EditText && views != null && views.length > 0) {
             for (View view : views) {
                 if (v == view) {
                     return true;

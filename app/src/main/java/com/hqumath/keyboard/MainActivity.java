@@ -68,17 +68,15 @@ public class MainActivity extends AppCompatActivity {
             case MotionEvent.ACTION_DOWN:
                 if (SoftKeyboardUtil.isTouchView(filterViewByIds(), ev))//过滤的EditText,不做处理
                     return super.dispatchTouchEvent(ev);
-                if (customEditViewIds() == null || systemEditViewIds() == null)
-                    return super.dispatchTouchEvent(ev);
                 View v = getCurrentFocus();
-                if (SoftKeyboardUtil.isFocusEditText(v, customEditViewIds())//当前焦点在自定义键盘EditText
+                if (SoftKeyboardUtil.isFocusEditText(v, systemEditViewIds())//当前焦点在系统键盘EditText
+                        && !SoftKeyboardUtil.isTouchView(systemEditViewIds(), ev)) {//且没有触摸在系统键盘EditText
+                    SoftKeyboardUtil.hideInputForce(MainActivity.this, v);//隐藏系统键盘
+                    v.clearFocus();//清空焦点
+                } else if (SoftKeyboardUtil.isFocusEditText(v, customEditViewIds())//当前焦点在自定义键盘EditText
                         && !SoftKeyboardUtil.isTouchView(customEditViewIds(), ev)) {//且没有触摸在自定义键盘EditText
                     if (keyboardUtil != null)//隐藏自定义键盘
                         keyboardUtil.hide();
-                    v.clearFocus();//清空焦点
-                } else if (SoftKeyboardUtil.isFocusEditText(v, systemEditViewIds())//当前焦点在系统键盘EditText
-                        && !SoftKeyboardUtil.isTouchView(systemEditViewIds(), ev)) {//且没有触摸在系统键盘EditText
-                    SoftKeyboardUtil.hideInputForce(MainActivity.this, v);//隐藏系统键盘
                     v.clearFocus();//清空焦点
                 }
                 break;
