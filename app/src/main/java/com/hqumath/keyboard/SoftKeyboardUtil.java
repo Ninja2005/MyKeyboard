@@ -20,23 +20,6 @@ import android.widget.EditText;
 public class SoftKeyboardUtil {
 
     /**
-     * 清除editText的焦点
-     *
-     * @param v     焦点所在View
-     * @param views 输入框
-     */
-    public static void clearViewFocus(View v, View... views) {
-        if (null != v && null != views && views.length > 0) {
-            for (View view : views) {
-                if (v == view) {
-                    v.clearFocus();
-                    break;
-                }
-            }
-        }
-    }
-
-    /**
      * 隐藏键盘
      *
      * @param v     焦点所在View
