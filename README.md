@@ -15,7 +15,7 @@
     protected void initListener() {
         keyboardUtil = new KeyboardUtil(this, mMain_ll);//根布局 用来上推
         keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Num, mNum_ed);//数字键盘
-        keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Pwd, mPwd1_ed, mPwd2_ed);//随机键盘
+        //keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Pwd, mPwd1_ed, mPwd2_ed);//随机键盘
     }
 ```
 
