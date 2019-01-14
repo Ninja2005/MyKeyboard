@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
     protected void initListener() {
         keyboardUtil = new KeyboardUtil(this, mMain_ll);
-        keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Num, mNum_ed);//数字键盘
-        keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Pwd, mPwd1_ed, mPwd2_ed);//随机键盘
+        keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Num, mNum_ed);//自定义键盘
+        keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Only_Num_Pwd, mPwd1_ed);//随机纯数字键盘
+        keyboardUtil.initKeyboard(MyKeyboardView.KEYBOARDTYPE_Num_Pwd, mPwd2_ed);//随机键盘
     }
 
     /**

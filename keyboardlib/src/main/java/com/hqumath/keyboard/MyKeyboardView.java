@@ -1,6 +1,8 @@
 package com.hqumath.keyboard;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.text.Editable;
@@ -22,21 +24,25 @@ import java.util.Random;
  */
 public class MyKeyboardView extends KeyboardView {
     public static final int KEYBOARDTYPE_Num = 0;//数字键盘
-    public static final int KEYBOARDTYPE_Pwd = 1;//数字键盘（密码）
+    public static final int KEYBOARDTYPE_Num_Pwd = 1;//数字键盘（密码）
     public static final int KEYBOARDTYPE_ABC = 2;//字母键盘
     public static final int KEYBOARDTYPE_Symbol = 4;//符号键盘
+    public static final int KEYBOARDTYPE_Only_Num_Pwd = 5;//数字键盘（密码）(不能切换其他键盘)
+
     private final String strLetter = "abcdefghijklmnopqrstuvwxyz";//字母
 
     private EditText mEditText;
     private PopupWindow mWindow;
 
     private Keyboard keyboardNum;
-    private Keyboard keyboardPwd;
+    private Keyboard keyboardNumPwd;
+    private Keyboard keyboardOnlyNumPwd;
     private Keyboard keyboardABC;
     private Keyboard keyboardSymbol;
 
     public boolean isSupper = false;//字母键盘 是否大写
     public boolean isPwd = false;//数字键盘 是否随机
+    private int keyBoardType;//键盘类型
 
     public MyKeyboardView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -49,7 +55,8 @@ public class MyKeyboardView extends KeyboardView {
     public void init(EditText editText, PopupWindow window, int keyBoardType) {
         this.mEditText = editText;
         this.mWindow = window;
-        if (keyBoardType == KEYBOARDTYPE_Pwd)
+        this.keyBoardType = keyBoardType;
+        if (keyBoardType == KEYBOARDTYPE_Num_Pwd || keyBoardType == KEYBOARDTYPE_Only_Num_Pwd)
             isPwd = true;
         setEnabled(true);
         setPreviewEnabled(false);
@@ -76,16 +83,22 @@ public class MyKeyboardView extends KeyboardView {
                     keyboardABC = new Keyboard(getContext(), R.xml.keyboard_abc);
                 setKeyboard(keyboardABC);
                 break;
-            case KEYBOARDTYPE_Pwd:
-                if (keyboardPwd == null)
-                    keyboardPwd = new Keyboard(getContext(), R.xml.keyboard_number);
-                randomKey(keyboardPwd);
-                setKeyboard(keyboardPwd);
+            case KEYBOARDTYPE_Num_Pwd:
+                if (keyboardNumPwd == null)
+                    keyboardNumPwd = new Keyboard(getContext(), R.xml.keyboard_number);
+                randomKey(keyboardNumPwd);
+                setKeyboard(keyboardNumPwd);
                 break;
             case KEYBOARDTYPE_Symbol:
                 if (keyboardSymbol == null)
                     keyboardSymbol = new Keyboard(getContext(), R.xml.keyboard_symbol);
                 setKeyboard(keyboardSymbol);
+                break;
+            case KEYBOARDTYPE_Only_Num_Pwd:
+                if (keyboardOnlyNumPwd == null)
+                    keyboardOnlyNumPwd = new Keyboard(getContext(), R.xml.keyboard_only_number);
+                randomKey(keyboardOnlyNumPwd);
+                setKeyboard(keyboardOnlyNumPwd);
                 break;
         }
     }
@@ -124,7 +137,7 @@ public class MyKeyboardView extends KeyboardView {
                     break;
                 case 123123://切换数字键盘
                     if (isPwd) {
-                        setKeyBoardType(KEYBOARDTYPE_Pwd);
+                        setKeyBoardType(KEYBOARDTYPE_Num_Pwd);
                     } else {
                         setKeyBoardType(KEYBOARDTYPE_Num);
                     }
@@ -215,6 +228,27 @@ public class MyKeyboardView extends KeyboardView {
                 pKeyLis.get(i).label = ayRandomKey[index] + "";
                 pKeyLis.get(i).codes[0] = 48 + ayRandomKey[index];
                 index++;
+            }
+        }
+    }
+
+    @Override
+    public void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        if (keyBoardType == KEYBOARDTYPE_Only_Num_Pwd) {//纯数字键盘，删除按钮特殊绘制
+            List<Keyboard.Key> keys = getKeyboard().getKeys();
+            for (Keyboard.Key key : keys) {
+                if (key.codes[0] == -5) {//删除按钮
+                    Drawable dr = getContext().getResources().getDrawable(R.drawable
+                            .keyboard_keybg_gray);
+                    dr.setBounds(key.x, key.y, key.x + key.width, key.y + key.height);
+                    dr.draw(canvas);
+                    int drawableX = key.x + (key.width - key.icon.getIntrinsicWidth()) / 2;
+                    int drawableY = key.y + (key.height - key.icon.getIntrinsicHeight()) / 2;
+                    key.icon.setBounds(drawableX, drawableY, drawableX + key.icon
+                            .getIntrinsicWidth(), drawableY + key.icon.getIntrinsicHeight());
+                    key.icon.draw(canvas);
+                }
             }
         }
     }
