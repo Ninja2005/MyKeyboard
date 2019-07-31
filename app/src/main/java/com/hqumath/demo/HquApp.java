@@ -1,4 +1,4 @@
-package com.hqumath.keyboard;
+package com.hqumath.demo;
 
 import android.app.Application;
 

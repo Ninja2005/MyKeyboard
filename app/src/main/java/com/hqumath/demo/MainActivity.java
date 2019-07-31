@@ -1,11 +1,14 @@
-package com.hqumath.keyboard;
+package com.hqumath.demo;
 
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import com.hqumath.keyboard.KeyboardTool;
+import com.hqumath.keyboard.KeyboardUtil;
+import com.hqumath.keyboard.MyKeyboardView;
 
 /**
  * ****************************************************************
@@ -18,7 +21,7 @@ import android.widget.EditText;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private ConstraintLayout mMain_ll;//主布局
+    private LinearLayout mMain_ll;//主布局
     private EditText mNormal_ed;//系统键盘
     private EditText mNum_ed;//自定义键盘
     private EditText mPwd1_ed;//随机键盘1
